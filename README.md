@@ -54,10 +54,10 @@ python -m tally.cli ingest samples/          # 30 秒跑起来
 
 ## 进度
 
-- [x] 第 1/5/8 章试水优先（差异化最强的三张牌）
-- [ ] 全 13 章
+- [x] 全 13 章初稿 v0.1（五段式全展开：失败先行/决策备选/代码精讲/破坏性实验/习题）
+- [ ] 三章试水发布（ch01/05/08）+ 掘金/知乎连载
 - [ ] mkdocs 站点部署（GitHub Pages）
-- [ ] 防漂移 CI（`experiments/` 全量脚本化后启用）
+- [ ] 防漂移 CI 启用（`experiments/` 全量脚本化后）
 
 ## License
 
