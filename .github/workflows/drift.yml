@@ -1,0 +1,36 @@
+# 防漂移 CI：教程用自己证明自己
+# 定期（或 tally 升 tag 后手动触发）跑 experiments/ 全部实验脚本，
+# 验证教程声称的输出/指标没有因 tally 演进而漂移。
+# TODO：仓库公开 + experiments 全量脚本化后启用 schedule 触发。
+name: drift-check
+on:
+  workflow_dispatch: {}
+  # schedule:
+  #   - cron: "17 3 * * 1"   # 每周一（避免整点拥挤）
+
+jobs:
+  experiments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TALLY_REF: v0.7   # 教程锁定的 tally 版本锚点
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: 拉取 tally（锁定 tag）
+        run: git clone --depth 1 --branch "$TALLY_REF"
+              https://github.com/Ming-H/tally.git "$RUNNER_TEMP/tally"
+      - name: 安装依赖并摄取语料
+        run: |
+          pip install -r "$RUNNER_TEMP/tally/requirements.txt"
+          cd "$RUNNER_TEMP/tally"
+          python -m tally.cli ingest samples/
+          python -m tally.cli ingest data/中际旭创
+          python -m tally.cli ingest data/贵州茅台
+      - name: 跑全部实验脚本
+        run: |
+          export TALLY_DIR="$RUNNER_TEMP/tally"
+          for s in experiments/*.sh; do bash "$s"; done
