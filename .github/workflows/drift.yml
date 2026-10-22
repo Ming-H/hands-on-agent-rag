@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      TALLY_REF: v0.7   # 教程锁定的 tally 版本锚点
+      TALLY_REF: v0.7.1 # 教程锁定的 tally 版本锚点
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
