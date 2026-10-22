@@ -21,7 +21,7 @@ set +e
 TALLY_DB=/tmp/ch03.db python -m tally.cli eval --mode heuristic --dataset innolight --min-retrieval 1.0 --min-hit 1.0
 rc=$?
 set -e
-echo "exit=$rc（预期 1：门槛拦住退化）"
+echo "exit=${rc}（预期 1：门槛拦住退化）"
 cp /tmp/ingest.bak tally/ingest.py
 rm -f /tmp/ch03.db /tmp/ch03.db-wal /tmp/ch03.db-shm
 echo "== 已还原 =="

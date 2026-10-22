@@ -9,8 +9,8 @@ echo "== 基线：词法双轨 =="
 python -m tally.cli eval --mode heuristic --dataset innolight \
   --min-retrieval 1.0 --min-hit 1.0
 
-echo "== 安装向量依赖并嵌入 =="
-pip install -r requirements-vec.txt
+echo "== 安装向量依赖并嵌入（已装则跳过；uv 环境可用 uv pip install）=="
+python -c "import fastembed" 2>/dev/null || python -m pip install -r requirements-vec.txt
 python -m tally.cli embed
 
 echo "== 三路（TALLY_VEC=on）重跑 =="

@@ -16,7 +16,7 @@ set +e
 python -m tally.cli eval --mode heuristic --dataset default --min-hit 1.0 > /tmp/gate_out.txt 2>&1
 rc=$?
 set -e
-echo "exit=$rc（预期 1）"
+echo "exit=${rc}（预期 1）"
 grep -m1 -A2 "门槛未过" /tmp/gate_out.txt || true
 cp /tmp/ds.bak evals/dataset.json
 python -m tally.cli eval --mode heuristic --dataset default --min-hit 1.0 > /dev/null 2>&1 && echo "还原后 exit=0 OK"
