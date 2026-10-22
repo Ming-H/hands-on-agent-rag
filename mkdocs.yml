@@ -1,4 +1,5 @@
 site_name: 动手学 Agent RAG
+site_url: https://ming-h.github.io/hands-on-agent-rag/
 site_description: 基于开源项目 Tally 的证据式问答系统教程
 repo_url: https://github.com/Ming-H/hands-on-agent-rag
 repo_name: hands-on-agent-rag

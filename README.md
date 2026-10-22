@@ -1,5 +1,8 @@
 # 动手学 Agent RAG
 
+[![Deploy Pages](https://github.com/Ming-H/hands-on-agent-rag/actions/workflows/deploy.yml/badge.svg)](https://github.com/Ming-H/hands-on-agent-rag/actions/workflows/deploy.yml)
+[![Site](https://img.shields.io/badge/site-ming--h.github.io-brown.svg)](https://ming-h.github.io/hands-on-agent-rag/)
+
 > 基于开源项目 [Tally](https://github.com/Ming-H/tally) 的证据式问答系统教程
 > —— 13 章 · 13 个破坏性实验 · 40 道真值题
 
