@@ -25,23 +25,23 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - 前言: preface.md
-  - 第一部 知识入库:
-      - ch01 为什么你的 RAG Demo 上不了线: ch01.md
-      - ch02 PDF 到大模型可读的内容: ch02.md
-      - ch03 表格感知分块: ch03.md
-      - ch04 存储选型: ch04.md
-      - ch05 双轨检索与 embedding 消融: ch05.md
-  - 第二部 求证闸门:
+  - 第一部分 语料工程:
+      - ch01 从 RAG Demo 到可信问答系统: ch01.md
+      - ch02 文档摄取：解析·元数据·增量: ch02.md
+      - ch03 文本切分：语义单元与表格感知: ch03.md
+      - ch04 存储选型：全文检索·向量库·混合引擎: ch04.md
+      - ch05 检索策略：双轨词法与 embedding 消融: ch05.md
+  - 第二部分 生成与验证:
       - ch06 查询理解与路由: ch06.md
-      - ch07 生成与引用: ch07.md
-      - ch08 对账闸门: ch08.md
-      - ch09 口径守卫: ch09.md
-  - 第三部 Agent 化:
-      - ch10 ReAct 工具环: ch10.md
-      - ch11 Planner 与 Memory: ch11.md
-  - 第四部 诚实:
-      - ch12 评测即测试: ch12.md
-      - ch13 边界账本: ch13.md
+      - ch07 证据组装与引用生成: ch07.md
+      - ch08 输出验证：覆盖率闸门: ch08.md
+      - ch09 领域口径：多层防御: ch09.md
+  - 第三部分 Agent 架构:
+      - ch10 工具调用与 ReAct 循环: ch10.md
+      - ch11 规划与记忆: ch11.md
+  - 第四部分 评测与可靠性:
+      - ch12 评测工程: ch12.md
+      - ch13 可靠性设计: ch13.md
   - 附录:
       - A 术语表: appendix-a-glossary.md
       - B 环境与通道配置: appendix-b-setup.md
