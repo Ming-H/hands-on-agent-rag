@@ -30,4 +30,4 @@ python -m tally.cli ingest samples/
 python -m tally.cli ask "欧科亿 2026 年半年度预计净利润多少"
 ```
 
-然后从 [第 1 章](ch01.md) 开始。
+先读 [前言](preface.md)（怎么读这本书），然后从 [第 1 章](ch01.md) 开始；术语速查见 [附录 A](appendix-a-glossary.md)。

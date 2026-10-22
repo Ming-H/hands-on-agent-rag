@@ -23,6 +23,7 @@ markdown_extensions:
       generic: false
 nav:
   - 首页: index.md
+  - 前言: preface.md
   - 第一部 知识入库:
       - ch01 为什么你的 RAG Demo 上不了线: ch01.md
       - ch02 PDF 到大模型可读的内容: ch02.md
@@ -40,3 +41,8 @@ nav:
   - 第四部 诚实:
       - ch12 评测即测试: ch12.md
       - ch13 边界账本: ch13.md
+  - 附录:
+      - A 术语表: appendix-a-glossary.md
+      - B 环境与通道配置: appendix-b-setup.md
+      - C Tally 代码地图: appendix-c-codemap.md
+      - D 决策记录索引: appendix-d-decisions.md

@@ -1,0 +1,20 @@
+# GitHub Pages 自动部署：main 分支 push 即发布教程站
+# 首次使用：仓库 Settings → Pages → Source 选 GitHub Actions
+name: deploy-pages
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force --no-history
