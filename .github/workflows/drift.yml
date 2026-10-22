@@ -19,7 +19,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
       - name: 拉取 tally（锁定 tag）
         run: git clone --depth 1 --branch "$TALLY_REF"
               https://github.com/Ming-H/tally.git "$RUNNER_TEMP/tally"
