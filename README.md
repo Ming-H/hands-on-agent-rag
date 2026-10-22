@@ -54,7 +54,7 @@ python -m tally.cli ingest samples/          # 30 秒跑起来
 
 ## 进度
 
-- [x] 全 13 章初稿 v0.1（五段式全展开：失败先行/决策备选/代码精讲/破坏性实验/习题）
+- [x] 全 13 章 **v0.2**（五段式 + 每章「业界视角」：切分方法全景/存储格式谱系/检索三大流派与 RRF/Self-RAG vs CRAG vs 归因闸/ReAct 谱系/MemGPT-Mem0-Zep 对比/RAGAS 评测三代/可靠性公理与 SRE 文化——引用链接全部核实可访）
 - [ ] 三章试水发布（ch01/05/08）+ 掘金/知乎连载
 - [ ] mkdocs 站点部署（GitHub Pages）
 - [ ] 防漂移 CI 启用（`experiments/` 全量脚本化后）
