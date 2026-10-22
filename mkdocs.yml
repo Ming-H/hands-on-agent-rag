@@ -19,6 +19,8 @@ markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: false
 nav:
   - 首页: index.md
   - 第一部 知识入库:

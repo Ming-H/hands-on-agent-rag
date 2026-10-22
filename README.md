@@ -54,10 +54,12 @@ python -m tally.cli ingest samples/          # 30 秒跑起来
 
 ## 进度
 
-- [x] 全 13 章 **v0.2**（五段式 + 每章「业界视角」：切分方法全景/存储格式谱系/检索三大流派与 RRF/Self-RAG vs CRAG vs 归因闸/ReAct 谱系/MemGPT-Mem0-Zep 对比/RAGAS 评测三代/可靠性公理与 SRE 文化——引用链接全部核实可访）
+- [x] 全 13 章 **v0.2**（五段式 + 每章「业界视角」，49 处核实引用）
+- [x] **实验脚本 12/13 章**（experiments/ch01–ch13，ch10 为只读变体——远端通道限制已在章内披露）
+- [x] **关键实验实测坐实**：ch03 表格崩塌（innolight 1.0→0.778）/ ch08 阈值两极端（0.0 潜伏无感、1.0 降级 93% 仍全对）/ ch12 门槛通电（exit=1 + 失败题点名）——真数字已写回章节
+- [x] mkdocs `--strict` 构建零警告；LICENSE（CC BY-SA 4.0）
 - [ ] 三章试水发布（ch01/05/08）+ 掘金/知乎连载
-- [ ] mkdocs 站点部署（GitHub Pages）
-- [ ] 防漂移 CI 启用（`experiments/` 全量脚本化后）
+- [ ] GitHub Pages 部署 + 防漂移 CI 启用（schedule 打开）
 
 ## License
 
