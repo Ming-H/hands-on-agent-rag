@@ -41,7 +41,8 @@ cp .env.example .env    # 按注释填三行即可切档；本地档连 .env 都
 
 - **测试把真实库清了？** 用 `TALLY_DB=/tmp/xxx.db` 隔离（Tally 的
   P3 事故就是这么来的——任何会写持久状态的代码，测试必须显式隔离）。
-- **远端通道 agent:fallback？** 正常：`chat_with_tools` 仅本地通道
-  （ch10），远端 metric/compare 自动走固定管线兜底，答案无损。
+- **Anthropic 通道 agent:fallback？** 正常：该通道 tools 未接（ch10），
+  metric/compare 自动走固定管线兜底，答案无损。OpenAI 兼容远端
+  v0.7.1 起直连 function calling（智谱 glm-5.3 实测，DESIGN-v0.7 §8.3）。
 - **改了代码指标变了？** 跑 `python -m tally.cli eval --mode heuristic`
   对照基线（auto 模式在本地 Ollama 在线时会悄悄走 llm 加方差）。
