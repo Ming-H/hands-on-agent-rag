@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch06：守卫链 trace + 白盒测试
+# ch09：守卫链 trace + 白盒测试
 # 前提：export TALLY_DIR=/path/to/tally（已 pip install -r requirements.txt）
 set -euo pipefail
 cd "$TALLY_DIR"

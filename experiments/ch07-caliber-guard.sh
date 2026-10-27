@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch09：口径防线——问扣非不含归母数
+# ch07：口径防线——问扣非不含归母数
 # 前提：export TALLY_DIR=/path/to/tally（已 pip install -r requirements.txt）
 set -euo pipefail
 cd "$TALLY_DIR"

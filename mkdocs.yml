@@ -19,32 +19,40 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.arithmatex:
       generic: false
 nav:
   - 首页: index.md
   - 前言: preface.md
-  - 第一部分 语料工程:
-      - ch01 从 RAG Demo 到可信问答系统: ch01.md
-      - ch02 文档摄取：解析·元数据·增量: ch02.md
-      - ch03 文本切分：语义单元与表格感知: ch03.md
-      - ch04 存储选型：全文检索·向量库·混合引擎: ch04.md
-      - ch05 检索策略：双轨词法与 embedding 消融: ch05.md
-  - 第二部分 生成与验证:
-      - ch06 查询理解与路由: ch06.md
-      - ch07 证据组装与引用生成: ch07.md
-      - ch08 输出验证：覆盖率闸门: ch08.md
-      - ch09 领域口径：多层防御: ch09.md
-  - 第三部分 Agent 架构:
-      - ch10 工具调用与 ReAct 循环: ch10.md
-      - ch11 规划与记忆: ch11.md
-  - 第四部分 评测与可靠性:
-      - ch12 评测工程: ch12.md
-      - ch13 可靠性设计: ch13.md
+  - 第一部分 全景:
+      - ch01 系统全景：从 RAG 到 Agentic RAG: ch01.md
+  - 第二部分 语料与检索:
+      - ch02 文档摄取：从原始文件到可信语料: ch02.md
+      - ch03 文本切分：语义单元与表格保全: ch03.md
+      - ch04 存储与索引：选型方法与工程不变量: ch04.md
+      - ch05 检索设计：词法、语义与 RRF 融合: ch05.md
+  - 第三部分 生成与验证:
+      - ch06 生成与引用：让每个答案可对账: ch06.md
+      - ch07 出口验证：三态闸门与口径防线: ch07.md
+  - 第四部分 Agent 枺构:
+      - ch08 LLM 接入层：模型选型与多通道适配: ch08.md
+      - ch09 查询理解与路由：LLM 提议，规则裁决: ch09.md
+      - ch10 任务规划：多跳分解与只删不造: ch10.md
+      - ch11 工具调用与 Agent 循环：护栏工程: ch11.md
+      - ch12 记忆系统：三层设计与读写闸门: ch12.md
+  - 第五部分 评测与可靠性:
+      - ch13 评测工程：真值集、LLM 裁判与 CI 门槛: ch13.md
+      - ch14 可靠性与系统总装：错误传播、安全失败与设计迁移: ch14.md
   - 附录:
       - A 术语表: appendix-a-glossary.md
-      - B 环境与通道配置: appendix-b-setup.md
+      - B 环境与安装: appendix-b-setup.md
       - C Tally 代码地图: appendix-c-codemap.md
       - D 决策记录索引: appendix-d-decisions.md
       - E 业界前沿地图: appendix-e-frontier-map.md
+      - F Agentic RAG 设计画布: appendix-f-design-canvas.md
+      - G 从原型到生产：检查清单: appendix-g-production-checklist.md

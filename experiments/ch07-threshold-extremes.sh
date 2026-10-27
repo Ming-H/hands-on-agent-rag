@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch08：★ 阈值两极端（0.0 无感 / 1.0 降级 93% 仍全对）
+# ch07：★ 阈值两极端（0.0 无感 / 1.0 降级 93% 仍全对）
 # 前提：export TALLY_DIR=/path/to/tally（已 pip install -r requirements.txt）
 set -euo pipefail
 cd "$TALLY_DIR"
