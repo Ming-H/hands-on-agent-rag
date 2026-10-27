@@ -64,7 +64,7 @@ python -m tally.cli ingest samples/          # 30 秒跑起来
 - [x] 关键实验实测坐实（沿用 v0.3 验证 + 新增实测）：ch03 表格崩塌（innolight 1.0→0.778）/ ch07 阈值两极端 / ch12 记忆隔离 + 投毒 / ch13 门槛通电 / naive_rag 三类失败（张冠李戴/兄弟数冒充/无据硬答）
 - [x] mkdocs `--strict` 构建零警告（mermaid 支持接入）；LICENSE（CC BY-SA 4.0）
 - [x] 前沿知识配层沿用（五完整节 ch05/07/11/12/14）+ 附录 E 五部分组重排；出处全部一手核实
-- [x] 动效架构图 ×13 沿用（ch08/新 ch10 mermaid 补位，动效图待补 2 张）
+- [x] 动效架构图 ×15（14 章全覆盖+首页旗舰）：新增 llm-channels（ch08 三通道判定）/ plan-cycle（ch10 子目标生命周期）；react-loop 章号引用修正并重导海报
 - [ ] 三章试水发布（ch01/05/07）+ 掘金/知乎连载
 - [ ] GitHub Pages 部署 + 防漂移 CI 启用（schedule 打开）
 
