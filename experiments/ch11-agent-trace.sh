@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch10：ReAct 步级观测（只读；OpenAI 兼容远端 v0.7.1 起直连 function calling，Anthropic 通道仍 fallback——见 DESIGN-v0.7 §8.3）
+# ch11：ReAct 步级观测（只读；OpenAI 兼容远端 v0.7.1 起直连 function calling，Anthropic 通道仍 fallback——见 DESIGN-v0.7 §8.3）
 # 前提：export TALLY_DIR=/path/to/tally
 set -euo pipefail
 cd "$TALLY_DIR"

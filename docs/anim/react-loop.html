@@ -125,9 +125,9 @@ const CONFIG = {
   ],
   notes: [
     {id:'nt-die',x:330, y:170, w:430, h:112, color:'rose', dashed:true,
-     lines:[{text:'自由循环的三种死法（10.1 实测）',size:13.5,color:'#fda4af',dy:30},
+     lines:[{text:'自由循环的三种死法（11.1 实测）',size:13.5,color:'#fda4af',dy:30},
             {text:'复读（烧预算）· 幻觉参数 · 不收手',size:12.5,color:'#94a3b8',dy:52},
-            {text:'护栏四件套 = 三原则的运行时版（§10.8）',size:12.5,color:'#94a3b8',dy:74}]},
+            {text:'护栏四件套 = 三原则的运行时版（§11.9）',size:12.5,color:'#94a3b8',dy:74}]},
   ],
   pops: [
     {id:'p-loop',x:890,  y:340, text:'thought → action → obs → gate，循环 ≤6 圈', color:'amber', size:13},
@@ -145,7 +145,7 @@ const CONFIG = {
   scenes: [
     {t:0.0, cap:'agent_research：ReAct 工具环 —— 自由 + 护栏 + 观测，缺一不可'},
     {t:1.2, cap:'入场：understanding 先验（公司/期间）随 query 一起进环', on:['q','e-qu','f-qu','und']},
-    {t:3.4, cap:'先验是护栏第四件：小模型幻觉 FY 参数时，先验直接改写（10.4）', on:['e-ua','f-ua','p-prior','nt-die']},
+    {t:3.4, cap:'先验是护栏第四件：小模型幻觉 FY 参数时，先验直接改写（11.4）', on:['e-ua','f-ua','p-prior','nt-die']},
     {t:6.0, cap:'环的一圈：Thought → Action（白名单三工具）→ Observation → gate', on:['th','act','obs','gate','e-ta','f-ta','e-ao','f-ao','e-og','f-og','e-gt','f-gt','orb-loop','p-loop','c-t1','c-t2','c-t3']},
     {t:9.8, cap:'护栏四件套：幂等缓存 / 整批重复收手 / 步数 ≤6 / 先验覆盖', on:['c-g1','c-g2','c-g3','c-g4']},
     {t:12.8,cap:'证据按 doc 轮转出水进池 —— 收多家的证，不偏食单文档', on:['evi','e-ae','f-ae']},

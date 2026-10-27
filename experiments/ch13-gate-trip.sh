@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch12：★ 门槛通电——毁整组关键词触发 exit=1（实测）
+# ch13：★ 门槛通电——毁整组关键词触发 exit=1（实测）
 # 前提：export TALLY_DIR=/path/to/tally（已 pip install -r requirements.txt）
 set -euo pipefail
 cd "$TALLY_DIR"

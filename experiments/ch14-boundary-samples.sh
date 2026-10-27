@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch13：亲跑边界样本（gate ≠ correctness 活体）
+# ch14：亲跑边界样本（gate ≠ correctness 活体）
 # 前提：export TALLY_DIR=/path/to/tally（已 pip install -r requirements.txt）
 set -euo pipefail
 cd "$TALLY_DIR"

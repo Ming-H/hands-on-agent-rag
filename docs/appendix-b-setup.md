@@ -35,14 +35,30 @@ cp .env.example .env    # 按注释填三行即可切档；本地档连 .env 都
 | `TALLY_SELF_CHECK` | 开 | trend 叙述的 LLM 裁判（非对称信任：只能否决）|
 | `TALLY_VEC` | 关 | 向量第三路（需 requirements-vec.txt + embed）|
 | `TALLY_MEMORY` | 开 | 三层记忆总闸 |
-| `TALLY_EVAL_MEMORY` | 隔离 | eval 内默认隔离台账，`on` 显式放开（ch11 详述）|
+| `TALLY_EVAL_MEMORY` | 隔离 | eval 内默认隔离台账，`on` 显式放开（ch12 详述）|
 
 ## 常见问题
 
 - **测试把真实库清了？** 用 `TALLY_DB=/tmp/xxx.db` 隔离（Tally 的
   P3 事故就是这么来的——任何会写持久状态的代码，测试必须显式隔离）。
-- **Anthropic 通道 agent:fallback？** 正常：该通道 tools 未接（ch10），
+- **Anthropic 通道 agent:fallback？** 正常：该通道 tools 未接（ch11），
   metric/compare 自动走固定管线兜底，答案无损。OpenAI 兼容远端
   v0.7.1 起直连 function calling（智谱 glm-5.3 实测，DESIGN-v0.7 §8.3）。
+
+## 自托管速查（Ollama / vLLM）
+
+```bash
+# Ollama（本地档默认）
+ollama pull qwen3.5:0.8b          # 要求 Ollama ≥ 0.40（think 参数）
+# TALLY_LLM_BASE_URL 不设即默认 http://localhost:11434/v1
+
+# vLLM（公司级自托管；OpenAI 兼容 API）
+pip install vllm && vllm serve Qwen/Qwen3-8B --port 8000
+# .env 三行接入：
+#   TALLY_LLM_BASE_URL=http://your-host:8000/v1
+#   TALLY_LLM_MODEL=Qwen/Qwen3-8B
+#   TALLY_LLM_API_KEY=dummy（vLLM 默认不校验，但 SDK 要非空）
+# 三档对比实验见 experiments/08-channel-compare.sh（ch08 §8.6）
+```
 - **改了代码指标变了？** 跑 `python -m tally.cli eval --mode heuristic`
   对照基线（auto 模式在本地 Ollama 在线时会悄悄走 llm 加方差）。

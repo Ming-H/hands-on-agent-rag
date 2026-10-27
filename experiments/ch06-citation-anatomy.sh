@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ch07：引用结构与漂移容忍（D13）
+# ch06：引用结构与漂移容忍（D13）
 # 前提：export TALLY_DIR=/path/to/tally（已 pip install -r requirements.txt）
 set -euo pipefail
 cd "$TALLY_DIR"
