@@ -21,3 +21,8 @@ echo "   命中的是同一个已过闸事实；隔离的意义是防止检索�
 echo "== ③ 记忆总闸关：回退无记忆行为（ask 不再有 memory 标记）=="
 TALLY_MEMORY=off python -m tally.cli ask "海伦哲2026年一季度营业收入多少" \
   --mode heuristic -v 2>&1 | grep -o "memory:[a-z]*" | head -1 || echo "（无 memory 标记——台账已关）"
+
+echo "== ④ 投毒复现（幕二）：假事实写入台账 → 读命中 → verify 拦 =="
+python -m pytest tests/test_v07.py::test_poisoned_fact_read_not_exempt -q 2>&1 | tail -1
+echo "→ 绕过写闸 SQL 注入 9,999,999,999.99 假事实，读路径命中它，"
+echo "   verify 对账证据池拦下——记忆是加速器，不是后门（12.3）"
