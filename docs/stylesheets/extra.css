@@ -1,0 +1,274 @@
+/* ==========================================================================
+   动手学 Agent RAG · 排版增强（extra.css）
+   原则：中文优先的字体栈（系统字体，零外呼）；密度与节奏面向长文阅读；
+   「案例研究」 admonition 做成全书视觉签名（暖棕，与主题色一致）。
+   ========================================================================== */
+
+/* ── 0. 变量：色板与节奏 ─────────────────────────────────────────── */
+:root {
+  /* 主题棕的深化伴色（与 mkdocs palette primary: brown 呼应）*/
+  --tg-ink: #2b2118;             /* 深棕墨：正文标题基调（浅色模式）*/
+  --tg-accent: #8d5424;          /* 强调棕：标题装饰、链接 hover */
+  --tg-tint: #f6efe7;            /* 案例研究底色（浅）*/
+  --tg-tint-border: #d9c3a8;
+  --tg-formula-bg: #faf6f1;
+  /* 节奏 */
+  --tg-line: 1.85;               /* 中文正文行高 */
+  --tg-para: 1.05em;             /* 段距 */
+  --tg-content-max: 46rem;       /* 正文可读宽度（Material 默认 61rem 对中文偏宽）*/
+}
+[data-md-color-scheme="slate"] {
+  --tg-ink: #e8e2d9;
+  --tg-accent: #d8a25e;
+  --tg-tint: #2a231b;
+  --tg-tint-border: #4d4032;
+  --tg-formula-bg: #26211a;
+}
+
+/* ── 1. 字体：中文系统字体栈，代码等宽含 CJK 回退 ─────────────────── */
+body,
+.md-typeset {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    "Source Han Sans SC", "Segoe UI", sans-serif;
+  letter-spacing: 0.01em;
+}
+.md-typeset code,
+.md-typeset pre,
+.md-search__input {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "JetBrains Mono",
+    "Noto Sans Mono CJK SC", monospace;
+}
+
+/* ── 2. 正文：密度与节奏 ─────────────────────────────────────────── */
+.md-typeset {
+  font-size: 0.78rem;            /* 14px 基准，中文可读 */
+  line-height: var(--tg-line);
+}
+.md-typeset p {
+  margin-block: var(--tg-para);
+}
+.md-typeset p + p,
+.md-typeset p + ul,
+.md-typeset ul + p {
+  margin-top: var(--tg-para);
+}
+/* 页面栅格放宽（给宽表留位），但正文文本收进可读宽度 */
+.md-grid {
+  max-width: 70rem;
+}
+.md-typeset > p,
+.md-typeset > ul,
+.md-typeset > ol,
+.md-typeset > blockquote {
+  max-width: 38rem;               /* ≈42 汉字/行，长文舒适上限 */
+}
+.md-typeset > h1,
+.md-typeset > h2,
+.md-typeset > h3 {
+  max-width: 42rem;
+}
+/* 案例框/导读框：盒子不限宽（内含宽表），但框内文本同受阅读宽约束 */
+.md-typeset .admonition p,
+.md-typeset .admonition ul,
+.md-typeset .admonition ol {
+  max-width: 40rem;
+}
+.md-typeset table {
+  max-width: none;               /* 表格不受正文宽约束 */
+  display: table;
+  width: auto;
+  min-width: 60%;
+}
+
+/* ── 3. 标题层级：章-节-小节的视觉阶梯 ──────────────────────────── */
+.md-typeset h1 {
+  font-weight: 800;
+  color: var(--tg-ink);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.4em;
+  padding-bottom: 0.5em;
+  background-image: linear-gradient(var(--md-primary-fg-color),
+                                    var(--md-primary-fg-color));
+  background-repeat: no-repeat;
+  background-size: 3.2em 4px;          /* 章题下的短强调条 */
+  background-position: left bottom;
+}
+.md-typeset h2 {
+  font-weight: 700;
+  margin-top: 2.4em;
+  padding-left: 0.55em;
+  border-left: 4px solid var(--md-primary-fg-color);
+  line-height: 1.5;
+}
+.md-typeset h3 {
+  font-weight: 700;
+  margin-top: 2em;
+  color: var(--tg-accent);
+}
+.md-typeset h2 + h3 { margin-top: 1.2em; }
+
+/* ── 4. 行内代码与代码块 ─────────────────────────────────────────── */
+.md-typeset code {
+  padding: 0.18em 0.42em;
+  border-radius: 4px;
+  font-size: 0.88em;
+  word-break: break-all;         /* 长标识符（verify_citations）允许断行 */
+}
+.md-typeset pre {
+  border-radius: 8px;
+  padding: 0.9em 1.1em;
+  font-size: 0.82em;
+  line-height: 1.65;
+}
+.md-typeset pre > code {
+  word-break: normal;
+  white-space: pre-wrap;         /* 长注释行折行，不再出横向滚动 */
+}
+/* 输出实录类代码块（首行注释含「输出实录/预期输出/实测」）由
+   chrombash 高亮统一，这里只调壳 */
+
+/* ── 5. 表格：这本书的第一公民 ──────────────────────────────────── */
+.md-typeset table:not([class]) {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.md-typeset table:not([class]) th {
+  background: var(--tg-tint);
+  color: var(--tg-ink);
+  font-weight: 700;
+  padding: 0.62em 0.9em;
+  white-space: nowrap;
+}
+.md-typeset table:not([class]) td {
+  padding: 0.55em 0.9em;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  font-variant-numeric: tabular-nums;  /* 数字列对齐 */
+  vertical-align: top;
+}
+.md-typeset table:not([class]) tr:nth-child(even) td {
+  background: rgba(141, 84, 36, 0.07);
+}
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(141, 84, 36, 0.13);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:nth-child(even) td {
+  background: rgba(216, 162, 94, 0.08);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover td {
+  background: rgba(216, 162, 94, 0.15);
+}
+
+/* ── 6. 「案例研究」签名框：abstract admonition 重塑 ─────────────── */
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract {
+  border: 1px solid var(--tg-tint-border);
+  border-left: 5px solid var(--md-primary-fg-color);
+  border-radius: 10px;
+  background: var(--tg-tint);
+  box-shadow: none;
+  padding: 0.1em 0.9em 0.8em;
+}
+.md-typeset .admonition.abstract > .admonition-title,
+.md-typeset details.abstract > .admonition-title {
+  background: transparent;
+  font-weight: 700;
+  color: var(--tg-ink);
+  padding-left: 0.4em;
+}
+.md-typeset .admonition.abstract > .admonition-title::before {
+  content: "\1F4D8";              /* 📘 书本图标：案例研究的签名 */
+  background: transparent;
+  color: var(--md-primary-fg-color);
+  font-size: 1.25em;
+  width: 1.4em;
+}
+.md-typeset .admonition.abstract > .admonition-title::after {
+  content: none;                  /* abstract 默认无折叠箭头，保持 */
+}
+/* 案例框内的表格与代码进一步柔化 */
+.admonition.abstract table:not([class]) th {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
+}
+
+/* ── 7. 公式块（手排，零依赖替代 MathJax）──────────────────────── */
+.tg-formula {
+  display: block;
+  margin: 1.4em auto;
+  padding: 0.9em 1.2em;
+  background: var(--tg-formula-bg);
+  border: 1px solid var(--tg-tint-border);
+  border-radius: 8px;
+  font-family: "STIX Two Math", "Cambria Math", Georgia,
+    "Noto Serif CJK SC", serif;
+  font-size: 1.02em;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.tg-formula sub, .tg-formula sup { font-size: 0.68em; }
+.tg-formula .frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 0.25em;
+}
+.tg-formula .frac > span:first-child {
+  border-bottom: 1.5px solid currentColor;
+  padding: 0 0.3em 0.1em;
+}
+.tg-formula .frac > span:last-child { padding: 0.1em 0.3em 0; }
+
+/* ── 8. 引用、分隔线、mermaid ───────────────────────────────────── */
+.md-typeset blockquote {
+  border-left: 3px solid var(--tg-tint-border);
+  padding: 0.2em 1em;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset hr {
+  border: 0;
+  height: 1px;
+  margin: 2.6em 20%;
+  background: linear-gradient(to right, transparent,
+    var(--tg-tint-border), transparent);
+}
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 1.6em 0;
+}
+.mermaid svg { max-width: 100%; }
+
+/* ── 9. 任务列表与链接（练习清单用）────────────────────────────── */
+.md-typeset [type="checkbox"] { accent-color: var(--md-primary-fg-color); }
+.md-typeset a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* ── 10. 导航与页脚的小修饰 ─────────────────────────────────────── */
+.md-nav__item--section > .md-nav__link {
+  font-weight: 600;
+}
+.md-footer {
+  border-top: 1px solid var(--tg-tint-border);
+}
+
+/* ── 11. 深色模式微调 ───────────────────────────────────────────── */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  color: var(--tg-accent);
+}
+[data-md-color-scheme="slate"] .md-typeset pre {
+  box-shadow: none;
+}
+
+/* ── 12. 打印：导出 PDF 时收干净交互件 ──────────────────────────── */
+@media print {
+  .md-header, .md-sidebar, .md-footer, .md-top,
+  .md-content__button { display: none !important; }
+  .md-typeset { font-size: 10.5pt; }
+  .md-typeset .admonition.abstract { break-inside: avoid; }
+  .md-typeset table:not([class]) { break-inside: avoid; }
+}

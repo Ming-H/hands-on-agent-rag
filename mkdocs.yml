@@ -15,7 +15,20 @@ theme:
       toggle: {icon: material/weather-sunny, name: 亮色}
   features:
     - navigation.tabs
+    - navigation.tabs.sticky      # 滚动时顶部标签不消失
+    - navigation.top              # 返回顶部
+    - navigation.footer           # 上一章/下一章
+    - navigation.tracking         # URL 锚点跟随
+    - toc.follow                  # 目录高亮当前节
+    - search.highlight
+    - search.suggest
     - content.code.copy
+  font: false                     # 不外呼 Google Fonts——中文系统字体栈见 extra.css
+copyright: © 2026 Ming-H · 《动手学 Agent RAG》· CC BY-SA 4.0
+
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight
