@@ -1,4 +1,4 @@
-# 动手学 Agent RAG
+# 动手学 Agentic RAG
 
 [![Deploy Pages](https://github.com/Ming-H/hands-on-agent-rag/actions/workflows/deploy.yml/badge.svg)](https://github.com/Ming-H/hands-on-agent-rag/actions/workflows/deploy.yml)
 [![Site](https://img.shields.io/badge/site-ming--h.github.io-brown.svg)](https://ming-h.github.io/hands-on-agent-rag/)

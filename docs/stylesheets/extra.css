@@ -42,7 +42,7 @@ body,
 
 /* ── 2. 正文：密度与节奏 ─────────────────────────────────────────── */
 .md-typeset {
-  font-size: 0.78rem;            /* 14px 基准，中文可读 */
+  font-size: 0.84rem;            /* ≈15px 基准（v2 上调：14→15px）*/
   line-height: var(--tg-line);
 }
 .md-typeset p {
@@ -72,7 +72,7 @@ body,
 .md-typeset .admonition p,
 .md-typeset .admonition ul,
 .md-typeset .admonition ol {
-  max-width: 40rem;
+  max-width: 42rem;
 }
 .md-typeset table {
   max-width: none;               /* 表格不受正文宽约束 */
@@ -112,14 +112,14 @@ body,
 .md-typeset code {
   padding: 0.18em 0.42em;
   border-radius: 4px;
-  font-size: 0.88em;
+  font-size: 0.9em;
   word-break: break-all;         /* 长标识符（verify_citations）允许断行 */
 }
 .md-typeset pre {
   border-radius: 8px;
   padding: 0.9em 1.1em;
-  font-size: 0.82em;
-  line-height: 1.65;
+  font-size: 0.86em;             /* ≈13px（v2 上调）*/
+  line-height: 1.7;
 }
 .md-typeset pre > code {
   word-break: normal;
@@ -132,7 +132,7 @@ body,
 .md-typeset table:not([class]) {
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 0.9em;
+  font-size: 0.94em;
   line-height: 1.6;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
@@ -164,6 +164,35 @@ body,
   background: rgba(216, 162, 94, 0.15);
 }
 
+/* ── 6a. admonition 家族统一几何：同圆角同边框，只以色调分化 ───── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  box-shadow: none;
+  font-size: 0.97em;
+}
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > .admonition-title {
+  font-weight: 700;
+}
+/* 导读（info）：沉静蓝灰 */
+.md-typeset .admonition.info {
+  border-color: color-mix(in srgb, var(--md-primary-fg-color--light) 30%, transparent);
+  background: rgba(72, 92, 128, 0.06);
+}
+/* 练习/迁移盒（example）：暖琥珀，与棕主题同族 */
+.md-typeset .admonition.example {
+  border-color: rgba(180, 120, 40, 0.35);
+  background: rgba(191, 128, 33, 0.08);
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.info {
+  background: rgba(110, 140, 190, 0.08);
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.example {
+  background: rgba(191, 128, 33, 0.12);
+}
+
 /* ── 6. 「案例研究」签名框：abstract admonition 重塑 ─────────────── */
 .md-typeset .admonition.abstract,
 .md-typeset details.abstract {
@@ -172,8 +201,17 @@ body,
   border-radius: 10px;
   background: var(--tg-tint);
   box-shadow: none;
-  padding: 0.1em 0.9em 0.8em;
+  padding: 0.15em 1.2em 1.1em;   /* v2：内边距加大，先前的密不透风 */
 }
+/* 框内段落与小标题（**加粗伪标题**）之间拉开节奏 */
+.md-typeset .admonition.abstract p { margin-block: 0.95em; }
+.md-typeset .admonition.abstract > p > strong:first-child {
+  display: inline-block;
+  margin-top: 0.4em;
+  color: var(--tg-accent);       /* 框内小节标题强调色，制造层级 */
+}
+.md-typeset .admonition.abstract pre { margin-block: 1.15em; }
+.md-typeset .admonition.abstract table:not([class]) { margin-block: 1.15em; }
 .md-typeset .admonition.abstract > .admonition-title,
 .md-typeset details.abstract > .admonition-title {
   background: transparent;
@@ -224,7 +262,21 @@ body,
 }
 .tg-formula .frac > span:last-child { padding: 0.1em 0.3em 0; }
 
-/* ── 8. 引用、分隔线、mermaid ───────────────────────────────────── */
+/* ── 8. 章首状态行：h1 后紧跟的 blockquote 塑成 byline 元信息条 ── */
+.md-typeset h1 + blockquote {
+  margin: -0.6em 0 2em;
+  padding: 0.55em 1em;
+  border: 1px dashed var(--tg-tint-border);
+  border-left: 4px solid var(--tg-accent);
+  border-radius: 8px;
+  background: var(--tg-formula-bg);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.82em;
+  line-height: 1.9;
+  max-width: 46rem;
+}
+
+/* ── 8b. 引用、分隔线、mermaid ─────────────────────────────────── */
 .md-typeset blockquote {
   border-left: 3px solid var(--tg-tint-border);
   padding: 0.2em 1em;
@@ -249,6 +301,13 @@ body,
 .md-typeset a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
 /* ── 10. 导航与页脚的小修饰 ─────────────────────────────────────── */
+.md-nav {
+  font-size: 0.72rem;
+}
+.md-nav__link--active,
+.md-nav__link:-webkit-any-link:hover {
+  font-weight: 600;
+}
 .md-nav__item--section > .md-nav__link {
   font-weight: 600;
 }
@@ -271,4 +330,96 @@ body,
   .md-typeset { font-size: 10.5pt; }
   .md-typeset .admonition.abstract { break-inside: avoid; }
   .md-typeset table:not([class]) { break-inside: avoid; }
+}
+
+/* ── 13. 首页 hero 与五部卡片（v2 新增）────────────────────────── */
+.tg-hero {
+  padding: 1.6em 1.8em 1.4em;
+  margin: 0 0 2.2em;
+  border: 1px solid var(--tg-tint-border);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg,
+      rgba(141, 84, 36, 0.06),
+      rgba(141, 84, 36, 0.015) 55%, transparent);
+}
+.tg-hero > blockquote {
+  border-left: 4px solid var(--md-primary-fg-color);
+  background: none;
+  padding: 0.1em 0 0.1em 1em;
+  margin: 0 0 1em;
+  font-size: 0.92em;
+}
+.tg-hero .tg-badges {
+  margin-top: 1.3em;
+  padding: 0.55em 1em;
+  display: inline-block;
+  border: 1px dashed var(--tg-tint-border);
+  border-radius: 999px;
+  background: var(--tg-formula-bg);
+  font-size: 0.85em;
+  color: var(--tg-accent);
+}
+[data-md-color-scheme="slate"] .tg-hero {
+  background: linear-gradient(135deg,
+    rgba(216, 162, 94, 0.08), transparent 60%);
+}
+
+/* 五部卡片：2 列网格（窄屏 1 列），序号徽标用计数器 */
+.tg-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1em;
+  counter-reset: tg-part;
+  margin: 1.8em 0;
+}
+.tg-cards > p {
+  counter-increment: tg-part;
+  position: relative;
+  margin: 0;
+  padding: 1em 1.1em 0.95em 3.1em;
+  border: 1px solid var(--tg-tint-border);
+  border-left: 4px solid var(--md-primary-fg-color);
+  border-radius: 12px;
+  background: var(--tg-formula-bg);
+  font-size: 0.88em;
+  line-height: 1.75;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  max-width: none !important;
+}
+.tg-cards > p:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+.tg-cards > p::before {
+  content: counter(tg-part);
+  position: absolute;
+  left: 0.85em;
+  top: 0.95em;
+  width: 1.55em;
+  height: 1.55em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 800;
+  font-size: 0.95em;
+}
+.tg-cards > p > strong {
+  display: block;
+  font-size: 1.05em;
+  color: var(--tg-ink);
+  margin-bottom: 0.15em;
+}
+.tg-cards > p > strong + em { display: block; }
+[data-md-color-scheme="slate"] .tg-cards > p { background: var(--tg-tint); }
+
+/* 首页 h1 居中放大（仅含 hero 的页面，:has 定位） */
+.md-typeset:has(.tg-hero) > h1 {
+  max-width: none;
+  background-image: none;
+  text-align: center;
+  font-size: 2.05em;
+  margin-bottom: 0.7em;
 }
